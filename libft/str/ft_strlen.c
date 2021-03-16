@@ -6,11 +6,11 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/08 13:11:32 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/02 21:04:21 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/03/15 13:47:13 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../incl/libft.h"
 
 size_t		ft_strlen(const char *str)
 {

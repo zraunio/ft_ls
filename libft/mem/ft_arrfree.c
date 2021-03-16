@@ -6,11 +6,11 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 14:15:24 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/04 16:48:36 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/03/15 13:47:13 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../incl/libft.h"
 
 void		ft_arr_free(char **arr)
 {

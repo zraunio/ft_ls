@@ -6,11 +6,11 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 12:55:46 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/05 19:49:25 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/03/15 13:47:13 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../incl/libft.h"
 
 char		*ft_litoa(long long int n)
 {

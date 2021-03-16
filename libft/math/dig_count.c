@@ -6,11 +6,11 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 10:58:51 by zraunio           #+#    #+#             */
-/*   Updated: 2021/02/11 14:33:09 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/03/15 13:47:13 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../incl/libft.h"
 
 int	ft_count_digit(long int nb)
 {

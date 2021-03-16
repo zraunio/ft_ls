@@ -1,13 +1,37 @@
 NAME = libft.a
 
-SRC =  	ascii/ft_isalnum.c \
+PRINTF = libftprintf.a
+
+CC = gcc
+
+CFLAGS = -Wall -Wextra -Werror -I$(HDR_SRC)
+
+# ASCII_DIR = ./ascii/ 
+# CONV_DIR = ./convert/
+# LIST_DIR = ./list/
+# MATH_DIR = ./math/
+# MEM_DIR = ./mem/
+# PRINT_DIR = ./print/
+# PRINTF_DIR = ./ft_printf/
+# STR_DIR = ./src/
+
+# ASCII = $(addprefix $(ASCII_DIR), $(_ASCII_SRC)) 
+# CONV = $(addprefix $(CONV_DIR), $(_CONV_SRC))
+# LIST = $(addprefix $(LIST_DIR), $(_LIST_SRC)) 
+# MATH = $(addprefix $(MATH_DIR, $(_MATH_SRC))
+# MEM = $(addprefix $(MEM_DIR, $(_MEM_SRC))
+# PRINT = $(addprefix $(PRINT_DIR), $(_PRINT_SRC)) 
+# STR = $(addprefix $(STR_DIR), $(_STR_SRC))
+
+_ASCII_SRC =  ascii/ft_isalnum.c \
 		ascii/ft_isalpha.c \
 		ascii/ft_isascii.c \
 		ascii/ft_isprint.c \
 		ascii/ft_ispunct.c \
 		ascii/ft_isdigit.c \
 		ascii/ft_isspace.c \
-		convert/ft_atoi.c \
+
+_CONV_SRC = convert/ft_atoi.c \
 		convert/ft_itoa_base.c \
 		convert/ft_itoa.c \
 		convert/ft_lutoa_base.c \
@@ -20,20 +44,23 @@ SRC =  	ascii/ft_isalnum.c \
 		convert/ft_litoa.c \
 		convert/ft_ftoa.c \
 		convert/ft_sizetoa.c \
-		list/ft_lstadd.c \
+
+_LIST_SRC = list/ft_lstadd.c \
 		list/ft_lstdel.c \
 		list/ft_lstdelone.c \
 		list/ft_lstiter.c \
 		list/ft_lstmap.c \
 		list/ft_lstnew.c \
-		math/dig_count_base.c \
+
+_MATH_SRC = math/dig_count_base.c \
 		math/dig_count.c \
 		math/ft_abs.c \
 		math/ft_float_abs.c \
 		math/ft_wdcounter.c \
 		math/ft_strstr_start.c \
 		math/ft_long_abs.c \
-		mem/ft_bzero.c \
+
+_MEM_SRC = mem/ft_bzero.c \
 		mem/ft_memalloc.c \
 		mem/ft_memccpy.c \
 		mem/ft_memchr.c \
@@ -44,7 +71,8 @@ SRC =  	ascii/ft_isalnum.c \
 		mem/ft_memset.c \
 		mem/ft_realloc.c \
 		mem/ft_arrfree.c \
-		print/ft_putchar_fd.c \
+
+_PRINT_SRC = print/ft_putchar_fd.c \
 		print/ft_putchar.c \
 		print/ft_putendl_fd.c \
 		print/ft_putendl.c \
@@ -56,7 +84,8 @@ SRC =  	ascii/ft_isalnum.c \
 		print/ft_putlong.c \
 		print/ft_putdouble.c \
 		print/ft_putshort.c \
-		str/ft_strcat.c \
+
+_STR_SRC = str/ft_strcat.c \
 		str/ft_strchr.c \
 		str/ft_strclr.c \
 		str/ft_strcmp.c \
@@ -90,24 +119,51 @@ SRC =  	ascii/ft_isalnum.c \
 		str/ft_strtrim_top.c \
 		str/ft_strtrim_end.c
 
-OUTPUT = $(SRC_BASE:.c=.o)
-OUT_DIR = obj
+_TREES = trees/ft_add_node.c \
+		trees/ft_new_node.c \
+		trees/ft_tree_hight.c
 
-HDR_SRC= ./
+_PRINTF_SRC = ft_printf/ft_printf.c \
+		ft_printf/print_split.c \
+		ft_printf/convert.c \
+		ft_printf/parse.c\
+		ft_printf/floats.c \
+		ft_printf/diu.c \
+		ft_printf/oxx.c \
+		ft_printf/print_oxx.c \
+		ft_printf/spc.c 
+
+
+PRINTF_OBJ = $(_PRINTF_SRC:.c=.o)
+OBJ = $(LIBFT_OBJ) $(PRINTF_OBJ)
+OBJ_DIR = obj
+LIBFT_SRCS = $(_STR_SRC) $(_PRINT_SRC) $(_MEM_SRC) $(_MATH_SRC) $(_LIST_SRC) $(_CONV_SRC) $(_ASCII_SRC) $(_TREES)
+LIBFT_OBJ = $(_ASCII_SRC:.c=.o) $(_CONV_SRC:.c=.o) $(_LIST_SRC:.c=.o) $(_MATH_SRC:.c=.o) $(_MEM_SRC:.c=.o) $(_PRINT_SRC:.c=.o) $(_STR_SRC:.c=.o)
+
+HDR_SRC= ./incl
 
 all: $(NAME)
 
-$(NAME):
-	gcc -c -Wall -Wextra -Werror $(SRC) -I $(HDR_SRC)
-	mkdir $(OUT_DIR)
-	mv *.o $(OUT_DIR)
-	ar rc $(NAME) $(OUT_DIR)/*.o
+$(NAME): $(OBJ_DIR) $(OBJ)
+	@echo "creating libft..."
+	@$(CC) $(CFLAGS) -c $(LIBFT_SRCS) $(_PRINTF_SRC)
+	@mv *.o $(OBJ_DIR)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
 
 clean:
-	rm -rf $(OUT_DIR)
+	@rm -f $(OBJS)
+	@find . -type f -name '*~' -print -delete -o -name '#*#' -print -delete
+	@find . -type f -name '.DS_Store' -print -delete
+	@echo "deleted some stuff"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@rm -rf $(OBJ_DIR)
+	@echo "deleted all the stuff"
 
 re: fclean all
 

@@ -6,11 +6,11 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 14:03:07 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/12 14:39:48 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/03/16 11:09:41 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../incl/libft.h"
 
 /*
 ** allocate a new binary tree element
@@ -23,7 +23,7 @@ t_bitree	*ft_new_node(void *item)
 
 	if (!(node = (t_bitree*)malloc(sizeof(t_bitree))))
 		return (NULL);
-	node = ft_memmaloc(sizeof(node));
+	node = ft_memalloc(sizeof(node));
 	node->item = item;
 	return (node);
 }
