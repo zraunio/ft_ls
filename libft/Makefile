@@ -14,6 +14,7 @@ CFLAGS = -Wall -Wextra -Werror -I$(HDR_SRC)
 # PRINT_DIR = ./print/
 # PRINTF_DIR = ./ft_printf/
 # STR_DIR = ./src/
+# BIT_DIR = ./bits
 
 # ASCII = $(addprefix $(ASCII_DIR), $(_ASCII_SRC)) 
 # CONV = $(addprefix $(CONV_DIR), $(_CONV_SRC))
@@ -84,6 +85,10 @@ _PRINT_SRC = print/ft_putchar_fd.c \
 		print/ft_putlong.c \
 		print/ft_putdouble.c \
 		print/ft_putshort.c \
+		print/ft_print_bits.c \
+
+_BIT_SRC = bits/ft_oradd_bit.c \
+		bits/ft_orfill_bit.c
 
 _STR_SRC = str/ft_strcat.c \
 		str/ft_strchr.c \
@@ -119,7 +124,7 @@ _STR_SRC = str/ft_strcat.c \
 		str/ft_strtrim_top.c \
 		str/ft_strtrim_end.c
 
-_TREES = trees/ft_add_node.c \
+_TREE_SRC = trees/ft_add_node.c \
 		trees/ft_new_node.c \
 		trees/ft_tree_hight.c
 
@@ -137,16 +142,16 @@ _PRINTF_SRC = ft_printf/ft_printf.c \
 PRINTF_OBJ = $(_PRINTF_SRC:.c=.o)
 OBJ = $(LIBFT_OBJ) $(PRINTF_OBJ)
 OBJ_DIR = obj
-LIBFT_SRCS = $(_STR_SRC) $(_PRINT_SRC) $(_MEM_SRC) $(_MATH_SRC) $(_LIST_SRC) $(_CONV_SRC) $(_ASCII_SRC) $(_TREES)
-LIBFT_OBJ = $(_ASCII_SRC:.c=.o) $(_CONV_SRC:.c=.o) $(_LIST_SRC:.c=.o) $(_MATH_SRC:.c=.o) $(_MEM_SRC:.c=.o) $(_PRINT_SRC:.c=.o) $(_STR_SRC:.c=.o)
+LIBFT_SRCS = $(_STR_SRC) $(_PRINT_SRC) $(_MEM_SRC) $(_MATH_SRC) $(_LIST_SRC) $(_CONV_SRC) $(_ASCII_SRC) $(_TREE_SRC) $(_BIT_SRC)
+LIBFT_OBJ = $(_ASCII_SRC:.c=.o) $(_CONV_SRC:.c=.o) $(_LIST_SRC:.c=.o) $(_MATH_SRC:.c=.o) $(_MEM_SRC:.c=.o) $(_PRINT_SRC:.c=.o) $(_STR_SRC:.c=.o) $(_BIT_SRC:.c=.o) $(_TREE_SRC:.c=.o)
 
 HDR_SRC= ./incl
 
 all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJ)
-	@echo "creating libft..."
-	@$(CC) $(CFLAGS) -c $(LIBFT_SRCS) $(_PRINTF_SRC)
+	@echo "creating some stuff..."
+	@ $(CC) $(CFLAGS) -c $(LIBFT_SRCS) $(_PRINTF_SRC)
 	@mv *.o $(OBJ_DIR)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
@@ -156,6 +161,8 @@ $(OBJ_DIR):
 
 clean:
 	@rm -f $(OBJS)
+	@rm -f $(LIBFT_OBJ)
+	@find . -type f -name '*.o' -print -delete -o -name '#*#' -print -delete
 	@find . -type f -name '*~' -print -delete -o -name '#*#' -print -delete
 	@find . -type f -name '.DS_Store' -print -delete
 	@echo "deleted some stuff"
@@ -163,7 +170,7 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 	@rm -rf $(OBJ_DIR)
-	@echo "deleted all the stuff"
+	@echo "deleted rest of the stuff"
 
 re: fclean all
 

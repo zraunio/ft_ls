@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 13:01:21 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/16 11:09:05 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/03/17 12:45:30 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include <stdint.h>
 # include <math.h>
-# include "libft.h"
+# include "ft_printf.h"
 
 # define BUFF_SIZE 8
 # define FD_SIZE 4096
@@ -121,6 +121,7 @@ void				ft_putendl_fd(char const *s, int fd);
 void				ft_putlong(long int nb);
 void				ft_putdouble(long double f, int decimal);
 void				ft_putshort(short nb);
+void				ft_print_bits(size_t nb, size_t size);
 /*
 ** string manipulation
 */
@@ -161,5 +162,10 @@ char				*ft_strtrim_end(const char *s, char c);
 t_bitree			*ft_new_node(void *item);
 void				ft_add_node(t_bitree **root, t_bitree *node);
 int					ft_tree_height(t_bitree *root);
+/*
+** bits
+*/
+size_t				ft_orfill_bit(size_t nb, size_t *arr);
+size_t				ft_oradd_bit(size_t nb, size_t *arr);
 
 #endif
