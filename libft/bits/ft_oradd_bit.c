@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 12:12:42 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/17 12:45:04 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/03/24 13:45:17 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_oradd_bit(size_t nb, size_t *arr)
 	i = 0;
 	while (arr[i] != 0)
 		nb |= (size_t)arr[i++];
-	return(nb);
+	return (nb);
 }
 /*
 ** adds all traits with | operator

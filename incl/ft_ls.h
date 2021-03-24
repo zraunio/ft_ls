@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 13:14:18 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/18 12:18:51 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/03/24 13:58:36 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <pwd.h>
+# include <grp.h>
 # include <time.h>
 
 # define ALL 0x1
@@ -28,4 +29,7 @@
 # define LINK 0x40
 # define HUMAN 0x80
 //0x100 0x200 0x400 0x800 0x1000 0x2000 etc.
+
+# define DIR 16877
+# define REG 33188
 #endif

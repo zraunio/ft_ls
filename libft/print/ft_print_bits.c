@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 09:57:22 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/17 10:52:42 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/03/24 13:42:38 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	ft_print_bits(size_t nb, size_t size)
 	while (i < size)
 	{
 		if ((nb >> i) & 1)
-			write (1, "1", 1);
+			write(1, "1", 1);
 		else
-			write (1, "0", 1);
+			write(1, "0", 1);
 		i++;
 	}
 }

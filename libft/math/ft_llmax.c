@@ -6,13 +6,11 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 15:07:28 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/15 13:47:13 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/03/24 13:43:34 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/libft.h"
-
-# define FT_MAX(x, y) (x) > (y) ? (x) : (y)
 
 long long int		ft_llmax(long long x, long long y)
 {
