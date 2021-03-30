@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 13:14:18 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/24 13:58:36 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/03/24 15:07:29 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,8 @@
 
 # define DIR 16877
 # define REG 33188
+
+# define OPTIONS "lsxarhtR"
+
+char 	*ls_options(char *str);
 #endif

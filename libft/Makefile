@@ -4,7 +4,7 @@ PRINTF = libftprintf.a
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -I$(HDR_SRC)
+CFLAGS = -Wall -Wextra -Werror -g -I$(HDR_SRC)
 
 # ASCII_DIR = ./ascii/ 
 # CONV_DIR = ./convert/

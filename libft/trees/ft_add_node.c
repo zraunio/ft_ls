@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 14:22:03 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/16 11:07:13 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/03/26 13:51:52 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	ft_add_node(t_bitree **root, t_bitree *node)
 		temp = node;
 		*root = temp;
 	}
-	else if (node->item < temp->item)
+	else if (ft_strcmp(node->item, temp->item) <= 0)
 		ft_add_node(&(temp->left), node);
-	else if (node->item > temp->item)
+	else
 		ft_add_node(&(temp->right), node);
 }

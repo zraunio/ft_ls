@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 13:01:21 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/24 13:43:13 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/03/25 14:36:18 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct		s_list
 
 typedef struct		s_bitree
 {
-	size_t			*item;
+	char			*item;
 	struct s_bitree	*left;
 	struct s_bitree	*right;
 }					t_bitree;
@@ -159,7 +159,7 @@ char				*ft_strtrim_end(const char *s, char c);
 /*
 ** binary trees
 */
-t_bitree			*ft_new_node(void *item);
+t_bitree			*ft_new_node(char *item);
 void				ft_add_node(t_bitree **root, t_bitree *node);
 int					ft_tree_height(t_bitree *root);
 /*
