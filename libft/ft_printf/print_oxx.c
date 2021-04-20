@@ -12,14 +12,14 @@
 
 #include "../incl/ft_printf.h"
 
-static char			*skip_zeroex(t_flags *flg, char *pad, char *out)
+static char	*skip_zeroex(t_flags *flg, char *pad, char *out)
 {
 	char	*temp;
 	char	c;
 
 	c = flg->padd_c;
 	if ((flg->cnvrsn == 'x' || flg->cnvrsn == 'X')
-	&& out[1] == 'x')
+		&& out[1] == 'x')
 	{
 		pad = ft_strjoin_free("0x", pad, 2);
 		temp = ft_strjoin_free(pad, &out[2], 1);
@@ -33,7 +33,7 @@ static char			*skip_zeroex(t_flags *flg, char *pad, char *out)
 	return (temp);
 }
 
-static size_t		padd_base(char *out, t_flags *flg)
+static size_t	padd_base(char *out, t_flags *flg)
 {
 	char	*pad;
 	char	c;
@@ -59,7 +59,7 @@ static size_t		padd_base(char *out, t_flags *flg)
 	return (ret);
 }
 
-static size_t		base_zero(t_flags *flgs, char *out)
+static size_t	base_zero(t_flags *flgs, char *out)
 {
 	int		len;
 
@@ -78,7 +78,7 @@ static size_t		base_zero(t_flags *flgs, char *out)
 	return (padd_base(out, flgs));
 }
 
-size_t				precision_base(char *out, t_flags *flgs)
+size_t	precision_base(char *out, t_flags *flgs)
 {
 	int		len;
 	char	*ret;

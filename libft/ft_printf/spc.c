@@ -36,14 +36,14 @@ static size_t	padd_str(char *str, t_flags *flg)
 	return (len);
 }
 
-static char		*handle_str(char *out, t_flags *flg)
+static char	*handle_str(char *out, t_flags *flg)
 {
 	char	*ret;
 
 	ret = NULL;
 	if (out == NULL)
 		ret = ft_strdup("(null)");
-	if (flg->decimal != (size_t)-1 && flg->decimal < ft_strlen(out))
+	if (flg->decimal != (size_t)(-1) && flg->decimal < ft_strlen(out))
 		ret = ft_strsub(out, 0, flg->decimal);
 	else if (ret == NULL)
 		ret = ft_strdup(out);
@@ -77,13 +77,13 @@ static size_t	padd_char(int c, t_flags *flg)
 
 static size_t	prepend_ptr(char *str, t_flags *flg)
 {
-	char *out;
+	char	*out;
 
 	out = ft_strjoin_free("0x", str, 2);
 	return (padd_str(out, flg));
 }
 
-size_t			convert_spc(char *str, va_list *list, t_flags *flg)
+size_t	convert_spc(char *str, va_list *list, t_flags *flg)
 {
 	char	*ret;
 
@@ -95,7 +95,7 @@ size_t			convert_spc(char *str, va_list *list, t_flags *flg)
 	}
 	else if (str[ft_strlen(str) - 1] == 'p')
 		return (prepend_ptr(ft_itoa_base(va_arg(*list, unsigned long), 16),
-		flg));
+				flg));
 	else if (str[ft_strlen(str) - 1] == '%')
 	{
 		ret = ft_strcnew(1, '%');

@@ -12,7 +12,7 @@
 
 #include "../incl/ft_printf.h"
 
-static char			*float_prepend(char *str, t_flags *flg)
+static char	*float_prepend(char *str, t_flags *flg)
 {
 	int		len;
 	char	*ret;
@@ -39,7 +39,7 @@ static char			*float_prepend(char *str, t_flags *flg)
 	return (ret);
 }
 
-static size_t		float_check_flags(t_flags *flgs, long long nb, char *str)
+static size_t	float_check_flags(t_flags *flgs, long long nb, char *str)
 {
 	char	*ret;
 
@@ -55,7 +55,7 @@ static size_t		float_check_flags(t_flags *flgs, long long nb, char *str)
 	return (padd_nbr(ret, flgs));
 }
 
-size_t				float_nbr(va_list *list, t_flags *flg)
+size_t	float_nbr(va_list *list, t_flags *flg)
 {
 	double		f;
 	long double	d;

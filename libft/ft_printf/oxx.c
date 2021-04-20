@@ -12,7 +12,7 @@
 
 #include "../incl/ft_printf.h"
 
-static size_t		octal_nbr(va_list *list, t_flags *flg)
+static size_t	octal_nbr(va_list *list, t_flags *flg)
 {
 	size_t		u;
 
@@ -23,16 +23,16 @@ static size_t		octal_nbr(va_list *list, t_flags *flg)
 	{
 		if (flg->ll)
 			return (precision_base(ft_lutoa_base((unsigned long long)u, 8),
-			flg));
+					flg));
 		else
 			return (precision_base(ft_lutoa_base((unsigned long)u, 8),
-			flg));
+					flg));
 	}
 	else
 		return (precision_base(ft_itoa_base((unsigned int)u, 8), flg));
 }
 
-static char			*hex_convert(char *out, char x)
+static char	*hex_convert(char *out, char x)
 {
 	size_t	i;
 
@@ -49,7 +49,7 @@ static char			*hex_convert(char *out, char x)
 	return (out);
 }
 
-static size_t		hex_nbr(va_list *list, t_flags *flg, char ex)
+static size_t	hex_nbr(va_list *list, t_flags *flg, char ex)
 {
 	char					*str;
 	unsigned long long int	x;
@@ -72,10 +72,10 @@ static size_t		hex_nbr(va_list *list, t_flags *flg, char ex)
 	}
 	else
 		return (precision_base(hex_convert(ft_itoa_base((unsigned int)x, 16),
-		ex), flg));
+					ex), flg));
 }
 
-size_t				convert_oxx(char *str, va_list *list, t_flags *flg)
+size_t	convert_oxx(char *str, va_list *list, t_flags *flg)
 {
 	if (str[ft_strlen(str) - 1] == 'o')
 		return (octal_nbr(list, flg));

@@ -12,7 +12,7 @@
 
 #include "../incl/ft_printf.h"
 
-static char		*signed_nbr(char *pad, char *str, char c)
+static char	*signed_nbr(char *pad, char *str, char c)
 {
 	char	*out;
 
@@ -27,7 +27,7 @@ static char		*signed_nbr(char *pad, char *str, char c)
 	return (out);
 }
 
-size_t			padd_nbr(char *str, t_flags *flg)
+size_t	padd_nbr(char *str, t_flags *flg)
 {
 	char	*pad;
 	char	*out;
@@ -45,7 +45,7 @@ size_t			padd_nbr(char *str, t_flags *flg)
 	}
 	else
 	{
-		if (!(out = (char*)malloc(sizeof(char) * ft_strlen(str) + 1)))
+		if (!(out = (char *)malloc(sizeof(char) * ft_strlen(str) + 1)))
 			return (0);
 		out = ft_strcpy(out, str);
 		free(str);
@@ -56,7 +56,7 @@ size_t			padd_nbr(char *str, t_flags *flg)
 	return (ret);
 }
 
-static char		*expand_nbr(char *out, t_flags *flgs)
+static char	*expand_nbr(char *out, t_flags *flgs)
 {
 	int		len;
 	char	*ret;
@@ -76,13 +76,13 @@ static char		*expand_nbr(char *out, t_flags *flgs)
 	return (ret);
 }
 
-size_t			nbr_check_flags(t_flags *flgs, long long nb, char *str)
+size_t	nbr_check_flags(t_flags *flgs, long long nb, char *str)
 {
 	int		len;
 	char	*ret;
 
-	if (((len = flgs->decimal - ft_strlen(str)) > 0 && nb > 0) ||
-	(nb <= 0 && (len = flgs->decimal - ft_strlen(&str[1])) > 0))
+	if (((len = flgs->decimal - ft_strlen(str)) > 0 && nb > 0)
+		|| (nb <= 0 && (len = flgs->decimal - ft_strlen(&str[1])) > 0))
 	{
 		ret = expand_nbr(str, flgs);
 		flgs->padd_c = 32;
@@ -104,15 +104,15 @@ size_t			nbr_check_flags(t_flags *flgs, long long nb, char *str)
 	return (padd_nbr(ret, flgs));
 }
 
-size_t			ft_convert(char *str, va_list *list, t_flags *flg)
+size_t	ft_convert(char *str, va_list *list, t_flags *flg)
 {
-	if (str[ft_strlen(str) - 1] == 's' || str[ft_strlen(str) - 1] == 'p' ||
-	str[ft_strlen(str) - 1] == 'c' || str[ft_strlen(str) - 1] == '%')
+	if (str[ft_strlen(str) - 1] == 's' || str[ft_strlen(str) - 1] == 'p'
+		|| str[ft_strlen(str) - 1] == 'c' || str[ft_strlen(str) - 1] == '%')
 		return (convert_spc(str, list, flg));
 	else if (str[ft_strlen(str) - 1] == 'f')
 		return (float_nbr(list, flg));
-	else if (str[ft_strlen(str) - 1] == 'd' || str[ft_strlen(str) - 1] == 'i' ||
-	str[ft_strlen(str) - 1] == 'u')
+	else if (str[ft_strlen(str) - 1] == 'd' || str[ft_strlen(str) - 1] == 'i'
+		|| str[ft_strlen(str) - 1] == 'u')
 		return (convert_diu(str, list, flg));
 	else
 		return (convert_oxx(str, list, flg));

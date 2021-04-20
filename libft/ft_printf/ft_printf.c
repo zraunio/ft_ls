@@ -12,7 +12,7 @@
 
 #include "../incl/ft_printf.h"
 
-int				ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	t_print		*print;
 	va_list		arg;
@@ -27,7 +27,8 @@ int				ft_printf(const char *format, ...)
 	}
 	else if (format)
 	{
-		if (!(print = (t_print*)malloc(sizeof(t_print))))
+		print = (t_print *)malloc(sizeof(t_print));
+		if (!print)
 			return (0);
 		ft_memset(print, 0, sizeof(t_print));
 		va_start(arg, format);

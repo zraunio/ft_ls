@@ -12,7 +12,7 @@
 
 #include "../incl/ft_printf.h"
 
-static int		get_precision(const char *str)
+static int	get_precision(const char *str)
 {
 	size_t	i;
 
@@ -40,7 +40,7 @@ static size_t	get_min_width(const char *str)
 	i = 1;
 	res = 0;
 	while (str[i] == '-' || str[i] == '+' || str[i] == '#' || str[i] == '0'
-	|| str[i] == ' ')
+		|| str[i] == ' ')
 		i++;
 	while (!(ft_isdigit(str[i])))
 	{
@@ -52,13 +52,13 @@ static size_t	get_min_width(const char *str)
 	return (res);
 }
 
-static void		fill_struct(const char *str, t_flags *flgs)
+static void	fill_struct(const char *str, t_flags *flgs)
 {
 	size_t		i;
 
 	i = 1;
 	while (str[i] == '-' || str[i] == '+' || str[i] == '#' || str[i] == '0'
-	|| str[i] == ' ')
+		|| str[i] == ' ')
 	{
 		str[i] == '-' ? flgs->left = 1 : 0;
 		str[i] == '+' ? flgs->sign = 1 : 0;
@@ -80,7 +80,7 @@ static void		fill_struct(const char *str, t_flags *flgs)
 	flgs->cnvrsn = str[ft_strlen(str) - 1];
 }
 
-static void		reset_flags(t_flags *flgs)
+static void	reset_flags(t_flags *flgs)
 {
 	flgs->decimal = 0;
 	flgs->h = 0;
@@ -99,12 +99,13 @@ static void		reset_flags(t_flags *flgs)
 	flgs->cnvrsn = 0;
 }
 
-size_t			parse(char *str, va_list *list)
+size_t	parse(char *str, va_list *list)
 {
 	t_flags		*flgs;
 	size_t		ret;
 
-	if (!(flgs = (t_flags*)malloc(sizeof(t_flags))))
+	flgs = (t_flags *)malloc(sizeof(t_flags));
+	if (!flgs)
 		return (0);
 	reset_flags(flgs);
 	fill_struct(str, flgs);
@@ -113,9 +114,9 @@ size_t			parse(char *str, va_list *list)
 	flgs->padd_c = 32;
 	flgs->padd_c = flgs->zero == 1 ? 48 : flgs->padd_c;
 	flgs->padd_c = flgs->left == 1 ? 32 : flgs->padd_c;
-	if (flgs->zero == 1 && flgs->decimal != (size_t)-1 &&
-	(flgs->cnvrsn != 's' && flgs->cnvrsn != 'p' && flgs->cnvrsn != 'c' &&
-	flgs->cnvrsn != '%'))
+	if (flgs->zero == 1 && flgs->decimal != (size_t)(-1)
+		&& (flgs->cnvrsn != 's' && flgs->cnvrsn != 'p' && flgs->cnvrsn != 'c'
+			&& flgs->cnvrsn != '%'))
 		flgs->padd_c = 32;
 	ret = ft_convert(str, list, flgs);
 	free(flgs);

@@ -12,7 +12,7 @@
 
 #include "../incl/ft_printf.h"
 
-static size_t		integer_long(va_list *list, t_flags *flg)
+static size_t	integer_long(va_list *list, t_flags *flg)
 {
 	long long int	d;
 	size_t			z;
@@ -36,7 +36,7 @@ static size_t		integer_long(va_list *list, t_flags *flg)
 	}
 }
 
-static size_t		decimal_nbr(va_list *list, t_flags *flg)
+static size_t	decimal_nbr(va_list *list, t_flags *flg)
 {
 	int			nb;
 	short		s;
@@ -65,7 +65,7 @@ static size_t		decimal_nbr(va_list *list, t_flags *flg)
 	}
 }
 
-static size_t		unsigned_long(va_list *list, t_flags *flg)
+static size_t	unsigned_long(va_list *list, t_flags *flg)
 {
 	unsigned long long	d;
 	unsigned long		i;
@@ -84,7 +84,7 @@ static size_t		unsigned_long(va_list *list, t_flags *flg)
 	}
 }
 
-static size_t		unsigned_nbr(va_list *list, t_flags *flg)
+static size_t	unsigned_nbr(va_list *list, t_flags *flg)
 {
 	unsigned int	nb;
 	unsigned short	s;
@@ -110,7 +110,7 @@ static size_t		unsigned_nbr(va_list *list, t_flags *flg)
 	}
 }
 
-size_t				convert_diu(char *str, va_list *list, t_flags *flg)
+size_t	convert_diu(char *str, va_list *list, t_flags *flg)
 {
 	if (str[ft_strlen(str) - 1] == 'd')
 		return (decimal_nbr(list, flg));

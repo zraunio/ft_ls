@@ -12,7 +12,7 @@
 
 #include "../incl/ft_printf.h"
 
-static int		reset_printf(t_print *print, int n)
+static int	reset_printf(t_print *print, int n)
 {
 	size_t	i;
 
@@ -20,7 +20,7 @@ static int		reset_printf(t_print *print, int n)
 	{
 		i = print->size;
 		ft_arr_free(print->vars);
-		ft_memdel((void*)&print->info_str);
+		ft_memdel((void *)&print->info_str);
 		print->size = 0;
 		free(print);
 	}
@@ -50,7 +50,7 @@ static size_t	count_split(const char *str)
 	return (words);
 }
 
-static void		fill_vars(t_print *print, size_t count, size_t j, size_t i)
+static void	fill_vars(t_print *print, size_t count, size_t j, size_t i)
 {
 	size_t	k;
 
@@ -61,14 +61,15 @@ static void		fill_vars(t_print *print, size_t count, size_t j, size_t i)
 			i++;
 		if (k != i)
 		{
-			if (!(print->vars[j++] = ft_strsub(print->info_str, k, (i - k))))
+			print->vars[j++] = ft_strsub(print->info_str, k, (i - k));
+			if (!print->vars[j])
 				return ((void)reset_printf(print, -1));
 		}
 		if (print->info_str[i] == '%')
 		{
 			k = i++;
 			while (print->info_str[i] != '\0' && ft_strchr("cspdiouxXf%",
-			print->info_str[i]) == NULL)
+					print->info_str[i]) == NULL)
 				i++;
 			if (ft_strchr("cspdiouxXf%", print->info_str[i]))
 				i++;
@@ -79,13 +80,14 @@ static void		fill_vars(t_print *print, size_t count, size_t j, size_t i)
 	print->vars[j] = NULL;
 }
 
-size_t			ft_print(t_print *print)
+size_t	ft_print(t_print *print)
 {
 	size_t	count;
 	size_t	i;
 
 	count = count_split(print->info_str);
-	if (!(print->vars = (char**)malloc(sizeof(char*) * (count + 1))))
+	print->vars = (char **)malloc(sizeof(char *) * (count + 1));
+	if (!print->vars)
 		return (0);
 	fill_vars(print, count, 0, 0);
 	i = 0;
