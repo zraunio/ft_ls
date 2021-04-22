@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   ft_double_abs.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zraunio <zraunio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/26 14:09:40 by zraunio           #+#    #+#             */
-/*   Updated: 2021/04/22 14:39:12 by zraunio          ###   ########.fr       */
+/*   Created: 2021/04/22 14:37:05 by zraunio           #+#    #+#             */
+/*   Updated: 2021/04/22 14:39:13 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/libft.h"
 
-size_t	ft_abs(long int value)
+long double	ft_double_abs(long double value)
 {
 	if (value < 0)
 		value = -value;

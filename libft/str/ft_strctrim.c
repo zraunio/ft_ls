@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strctrim.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: zraunio <zraunio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 13:00:01 by zraunio           #+#    #+#             */
-/*   Updated: 2021/01/14 15:27:06 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/04/22 14:40:54 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char	*ft_strctrim(char const *s, char c)
 	p = (char *)malloc(sizeof(char) * (end - start) + 2);
 	if (!p)
 		return (NULL);
+	i = 0;
 	while (s[start] != '\0' && end >= start)
 		p[i++] = s[start++];
 	p[i] = '\0';

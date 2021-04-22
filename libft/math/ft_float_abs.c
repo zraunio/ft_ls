@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_float_abs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: zraunio <zraunio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 12:54:25 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/15 13:47:13 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/04/22 14:39:11 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,5 @@ float	ft_float_abs(float value)
 {
 	if (value < 0)
 		value = -value;
-	else
-		value = value;
 	return (value);
 }

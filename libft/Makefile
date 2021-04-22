@@ -57,6 +57,7 @@ _MATH_SRC = math/dig_count_base.c \
 		math/dig_count.c \
 		math/ft_abs.c \
 		math/ft_float_abs.c \
+		math/ft_double_abs.c \
 		math/ft_wdcounter.c \
 		math/ft_strstr_start.c \
 		math/ft_long_abs.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: zraunio <zraunio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 13:01:21 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/25 14:36:18 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/04/22 14:37:54 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int					ft_isalnum(int n);
 */
 size_t				ft_abs(long int value);
 float				ft_float_abs(float value);
+long double			ft_double_abs(long double value);
 unsigned long int	ft_long_abs(long long int value);
 long long int		ft_powerof(long int nb, unsigned int p);
 long long int		ft_llmax(long long x, long long y);
