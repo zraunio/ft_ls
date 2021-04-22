@@ -12,7 +12,7 @@
 
 #include "../incl/libft.h"
 
-int		dig_count_base(long long int nb, long int base)
+int	dig_count_base(long long int nb, long int base)
 {
 	size_t	i;
 

@@ -36,7 +36,7 @@ static char	*ft_decimal(char *res, long double d, size_t decimal)
 	return (res);
 }
 
-char		*ft_ftoa(long double d, size_t decimal)
+char	*ft_ftoa(long double d, size_t decimal)
 {
 	char		*res;
 	long double	f;

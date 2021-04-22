@@ -12,7 +12,7 @@
 
 #include "../incl/libft.h"
 
-static int		ft_base(int nb)
+static int	ft_base(int nb)
 {
 	if (nb >= 10)
 		return (nb - 10 + 'a');
@@ -20,7 +20,7 @@ static int		ft_base(int nb)
 		return (nb + '0');
 }
 
-char			*ft_utoa_base(unsigned long int nb, long int base)
+char	*ft_utoa_base(unsigned long int nb, long int base)
 {
 	int						i;
 	char					*res;
@@ -31,7 +31,8 @@ char			*ft_utoa_base(unsigned long int nb, long int base)
 	while (tmp >= base)
 		tmp = tmp / base;
 	i = dig_count_base(nb, base);
-	if (!(res = ft_strnew(i)))
+	res = ft_strnew(i);
+	if (!res)
 		return (NULL);
 	res[i] = '\0';
 	while (i >= 0)

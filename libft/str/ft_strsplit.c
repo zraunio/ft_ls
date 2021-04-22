@@ -33,7 +33,7 @@ static size_t	ft_countwords(char const *s, char c)
 	return (count);
 }
 
-static char		*make_word(char const *s, char c, size_t i)
+static char	*make_word(char const *s, char c, size_t i)
 {
 	int		len;
 	char	*word;
@@ -41,12 +41,13 @@ static char		*make_word(char const *s, char c, size_t i)
 	len = i;
 	while (s[len] != c && s[len] != '\0')
 		len++;
-	if (!(word = ft_strsub(s, i, (len - i))))
+	word = ft_strsub(s, i, (len - i));
+	if (!word)
 		free(word);
 	return (word);
 }
 
-static char		**split_string(char const *s, char c, size_t count)
+static char	**split_string(char const *s, char c, size_t count)
 {
 	size_t		j;
 	size_t		i;
@@ -54,7 +55,8 @@ static char		**split_string(char const *s, char c, size_t count)
 
 	i = 0;
 	j = 0;
-	if (!(words = (char **)malloc(sizeof(char*) * (count + 1))))
+	words = (char **)malloc(sizeof(char *) * (count + 1));
+	if (!words)
 		return (NULL);
 	while (s[i] && j < count)
 	{
@@ -72,7 +74,7 @@ static char		**split_string(char const *s, char c, size_t count)
 	return (words);
 }
 
-char			**ft_strsplit(char const *s, char c)
+char	**ft_strsplit(char const *s, char c)
 {
 	size_t	count;
 	char	**words;
@@ -80,7 +82,8 @@ char			**ft_strsplit(char const *s, char c)
 	if (!s)
 		return (NULL);
 	count = ft_countwords(s, c);
-	if (!(words = split_string(s, c, count)))
+	words = split_string(s, c, count);
+	if (!words)
 		ft_arr_free(words);
 	return (words);
 }

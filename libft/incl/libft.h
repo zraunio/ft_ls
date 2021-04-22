@@ -25,14 +25,14 @@
 # define BUFF_SIZE 8
 # define FD_SIZE 4096
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
 
-typedef struct		s_bitree
+typedef struct s_bitree
 {
 	char			*item;
 	struct s_bitree	*left;
@@ -59,7 +59,7 @@ long long int		ft_powerof(long int nb, unsigned int p);
 long long int		ft_llmax(long long x, long long y);
 size_t				ft_wdcounter(char const *str, char c);
 int					dig_count_base(long long int nb,
-					long int base);
+						long int base);
 int					ft_count_digit(long int nb);
 size_t				ft_strstr_start(const char *haystack, const char *needle);
 /*
@@ -70,9 +70,9 @@ int					ft_atoi(const char *str);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 char				*ft_itoa_base(long long int nb,
-					long int base);
+						long int base);
 char				*ft_lutoa_base(unsigned long long int nb,
-					long int base);
+						long int base);
 char				*ft_lutoa(unsigned long int nb);
 char				*ft_utoa(unsigned long int n);
 char				*ft_utoa_base(unsigned long int nb, long int base);
@@ -96,12 +96,12 @@ void				ft_memdel(void **ap);
 void				*ft_memalloc(size_t size);
 void				*ft_memset(void *s, int c, size_t n);
 void				*ft_memmove(void *dest, const void *src,
-					size_t n);
+						size_t n);
 void				*ft_memcpy(void *dest, const void *src, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);
 void				*ft_memccpy(void *dest, const void *src, int c,
-					size_t n);
+						size_t n);
 void				*ft_realloc(void *ptr, size_t size);
 void				ft_bzero(void *s, size_t n);
 void				ft_arr_free(char **arr);

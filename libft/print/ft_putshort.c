@@ -14,7 +14,7 @@
 
 void	ft_putshort(short nb)
 {
-	int i;
+	int	i;
 
 	i = nb;
 	if (i < 0)

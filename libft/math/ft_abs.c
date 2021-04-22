@@ -14,6 +14,9 @@
 
 size_t	ft_abs(long int value)
 {
-	value = (value < 0) ? (-value) : (value);
+	if (value < 0)
+		value = -value;
+	else
+		value = value;
 	return (value);
 }

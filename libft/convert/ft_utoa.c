@@ -12,13 +12,14 @@
 
 #include "../incl/libft.h"
 
-char		*ft_utoa(unsigned long int n)
+char	*ft_utoa(unsigned long int n)
 {
 	char		*res;
 	int			len;
 
 	len = ft_count_digit(n);
-	if (!(res = ft_strnew(len)))
+	res = ft_strnew(len);
+	if (!res)
 		return (NULL);
 	if (n == 0)
 		res[0] = '0';

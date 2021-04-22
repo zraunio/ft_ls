@@ -24,7 +24,7 @@ static size_t	find_end(char const *s, char c)
 	return (end);
 }
 
-char			*ft_strtrim_end(const char *s, char c)
+char	*ft_strtrim_end(const char *s, char c)
 {
 	size_t	start;
 	size_t	end;
@@ -37,16 +37,13 @@ char			*ft_strtrim_end(const char *s, char c)
 	if (start == ft_strlen(s))
 		return (ft_strnew(0));
 	end = find_end(s, c);
-	if (!(p = (char*)malloc(sizeof(char) * (end - start) + 2)))
+	p = (char *)malloc(sizeof(char) * (end - start) + 2);
+	if (!p)
 		return (NULL);
 	i = 0;
 	while (s[start] != '\0' && end >= start)
-	{
-		p[i] = s[start];
-		i++;
-		start++;
-	}
+		p[i++] = s[start++];
 	p[i] = '\0';
-	free((void*)s);
+	free((void *)s);
 	return (p);
 }

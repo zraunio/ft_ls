@@ -21,10 +21,11 @@ t_bitree	*ft_new_node(char *item)
 {
 	t_bitree	*node;
 
-	if (!(node = (t_bitree*)malloc(sizeof(t_bitree))))
+	node = (t_bitree *)malloc(sizeof(t_bitree));
+	if (!node)
 		return (NULL);
 	node->left = NULL;
-	node->right = NULL;	
+	node->right = NULL;
 	node->item = item;
 	return (node);
 }

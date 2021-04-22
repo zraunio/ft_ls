@@ -20,7 +20,7 @@ static int	ft_base(unsigned long long int nb)
 		return (nb + '0');
 }
 
-char		*ft_lutoa_base(unsigned long long int nb, long int base)
+char	*ft_lutoa_base(unsigned long long int nb, long int base)
 {
 	int							i;
 	char						*res;

@@ -16,7 +16,7 @@
 # include "libft.h"
 # include <stdarg.h>
 
-typedef struct	s_print
+typedef struct s_print
 {
 	char		**vars;
 	char		*info_str;
@@ -31,7 +31,7 @@ typedef struct	s_print
 ** size - data used for return value for ft_printf
 */
 
-typedef struct	s_flags
+typedef struct s_flags
 {
 	int		h;
 	int		hh;

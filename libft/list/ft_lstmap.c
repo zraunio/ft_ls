@@ -22,7 +22,8 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 	new = f(lst);
 	if (new == NULL)
 		return (NULL);
-	if (!(temp = ft_lstnew(new->content, new->content_size)))
+	temp = ft_lstnew(new->content, new->content_size);
+	if (!temp)
 		return (NULL);
 	temp = new;
 	while (lst->next)

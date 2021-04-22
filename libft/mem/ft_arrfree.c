@@ -12,7 +12,7 @@
 
 #include "../incl/libft.h"
 
-void		ft_arr_free(char **arr)
+void	ft_arr_free(char **arr)
 {
 	size_t	i;
 

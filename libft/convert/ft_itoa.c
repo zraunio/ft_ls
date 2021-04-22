@@ -12,13 +12,14 @@
 
 #include "../incl/libft.h"
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		num;
 	char	*s;
 
 	num = ft_count_digit(n);
-	if (!(s = (char*)malloc(sizeof(char) * num + 2)))
+	s = (char *)malloc(sizeof(char) * num + 2);
+	if (!s)
 		return (NULL);
 	s = ft_memset(s, 0, num);
 	s[num--] = '\0';

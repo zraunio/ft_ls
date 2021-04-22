@@ -27,7 +27,7 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 	{
 		p[i] = q[i];
 		if (q[i] == chr)
-			return ((void*)&p[++i]);
+			return ((void *)&p[++i]);
 		i++;
 	}
 	return (NULL);

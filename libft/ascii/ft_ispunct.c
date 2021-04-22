@@ -12,11 +12,11 @@
 
 #include "libft.h"
 
-int		ft_ispunct(int c)
+int	ft_ispunct(int c)
 {
 	if ((c >= 41 && c <= 47) || (c >= 50 && c <= 57) || (c >= 72 && c <= 77)
-		|| c == '@' || (c >= 133 && c <= 137) || c == 140 || (c >= 173 &&
-		c <= 176))
+		|| c == '@' || (c >= 133 && c <= 137) || c == 140 || (c >= 173
+			&& c <= 176))
 		return (1);
 	else
 		return (0);

@@ -36,7 +36,7 @@ static size_t	find_end(char const *s)
 	return (end);
 }
 
-char			*ft_strtrim(char const *s)
+char	*ft_strtrim(char const *s)
 {
 	size_t	i;
 	size_t	start;
@@ -50,14 +50,11 @@ char			*ft_strtrim(char const *s)
 	if (s[start] == '\0')
 		return (ft_strnew(0));
 	finish = find_end(s);
-	if (!(p = (char*)malloc(sizeof(char) * (finish - start) + 2)))
+	p = (char *)malloc(sizeof(char) * (finish - start) + 2);
+	if (!p)
 		return (NULL);
 	while (s[start] != '\0' && finish >= start)
-	{
-		p[i] = s[start];
-		i++;
-		start++;
-	}
+		p[i++] = s[start++];
 	p[i] = '\0';
 	return (p);
 }

@@ -14,6 +14,9 @@
 
 float	ft_float_abs(float value)
 {
-	value = (value < 0) ? (-value) : (value);
+	if (value < 0)
+		value = -value;
+	else
+		value = value;
 	return (value);
 }

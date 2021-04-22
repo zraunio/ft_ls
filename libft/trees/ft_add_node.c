@@ -19,7 +19,7 @@
 
 void	ft_add_node(t_bitree **root, t_bitree *node)
 {
-	t_bitree *temp;
+	t_bitree	*temp;
 
 	temp = *root;
 	if (temp == NULL)

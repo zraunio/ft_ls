@@ -18,13 +18,6 @@
 **temp, a.k.a. the rest of the fd not yet read. if EOF is reached, we del s[fd]
 */
 
-static int	clean_gnl(char *tmp, char **s, int fd)
-{
-	ft_memdel((void*)&tmp);
-	ft_memdel((void*)&s[fd]);
-	return (0);
-}
-
 static int	ft_find_line(char **s, int fd, int i, char **line)
 {
 	int		j;
@@ -52,16 +45,15 @@ static int	ft_find_line(char **s, int fd, int i, char **line)
 	return (1);
 }
 
-int			get_next_line(const int fd, char **line)
+int	get_next_line(const int fd, char **line)
 {
 	static char	*s[FD_SIZE];
 	char		buf[BUFF_SIZE + 1];
 	char		*tmp;
 	int			i;
 
-	if (fd < 0 || !line)
-		return (-1);
-	while ((i = read(fd, buf, BUFF_SIZE)) > 0)
+	i = read(fd, buf, BUFF_SIZE);
+	while (i > 0)
 	{
 		buf[i] = '\0';
 		if (s[fd] == NULL)
@@ -71,11 +63,12 @@ int			get_next_line(const int fd, char **line)
 		s[fd] = tmp;
 		if (ft_strchr(s[fd], '\n'))
 			break ;
+		i = read(fd, buf, BUFF_SIZE);
 	}
 	if (i < 0)
 		return (-1);
 	if ((i == 0 && s[fd] == NULL) || s[fd] == NULL)
-		return (clean_gnl(tmp, s, fd));
+		return (0);
 	else
 		return (ft_find_line(s, fd, i, line));
 }

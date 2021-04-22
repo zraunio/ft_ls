@@ -39,7 +39,7 @@ static double	calc_float(const char *str, double res)
 	return (res);
 }
 
-double			ft_atof(const char *str)
+double	ft_atof(const char *str)
 {
 	double	res;
 	double	n;

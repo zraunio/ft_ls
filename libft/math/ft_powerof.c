@@ -12,7 +12,7 @@
 
 #include "../incl/libft.h"
 
-long long int		ft_powerof(long int nb, unsigned int p)
+long long int	ft_powerof(long int nb, unsigned int p)
 {
 	long long int	tmp;
 

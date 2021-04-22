@@ -12,9 +12,9 @@
 
 #include "../incl/libft.h"
 
-int		ft_tree_height(t_bitree *root)
+int	ft_tree_height(t_bitree *root)
 {
-	int i;
+	int	i;
 
 	i = root ? 1 + ft_llmax(ft_tree_height(root->left), \
 	ft_tree_height(root->right)) : 0;
