@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   convert.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: zraunio <zraunio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 10:38:57 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/15 14:04:10 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/04/22 16:20:50 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static char	*signed_nbr(char *pad, char *str, char c)
 size_t	padd_nbr(char *str, t_flags *flg)
 {
 	char	*pad;
-	char	*out;
 	char	c;
 	size_t	ret;
 
@@ -39,20 +38,13 @@ size_t	padd_nbr(char *str, t_flags *flg)
 	{
 		pad = ft_strcnew(flg->min_wi - ft_strlen(str), c);
 		if (flg->left)
-			out = ft_strjoin_free(str, pad, 3);
+			str = ft_strjoin_free(str, pad, 3);
 		else
-			out = signed_nbr(pad, str, c);
+			str = signed_nbr(pad, str, c);
 	}
-	else
-	{
-		if (!(out = (char *)malloc(sizeof(char) * ft_strlen(str) + 1)))
-			return (0);
-		out = ft_strcpy(out, str);
-		free(str);
-	}
-	ft_putstr(out);
-	ret = ft_strlen(out);
-	ft_strdel(&out);
+	ft_putstr(str);
+	ret = ft_strlen(str);
+	ft_strdel(&str);
 	return (ret);
 }
 
@@ -81,7 +73,8 @@ size_t	nbr_check_flags(t_flags *flgs, long long nb, char *str)
 	int		len;
 	char	*ret;
 
-	if (((len = flgs->decimal - ft_strlen(str)) > 0 && nb > 0)
+	len = flgs->decimal - ft_strlen(str);
+	if ((len > 0 && nb > 0)
 		|| (nb <= 0 && (len = flgs->decimal - ft_strlen(&str[1])) > 0))
 	{
 		ret = expand_nbr(str, flgs);

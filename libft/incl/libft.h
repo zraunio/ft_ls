@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 13:01:21 by zraunio           #+#    #+#             */
-/*   Updated: 2021/04/22 14:37:54 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/04/22 16:35:44 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <fcntl.h>
 # include <stdint.h>
 # include <math.h>
-# include "ft_printf.h"
 
 # define BUFF_SIZE 8
 # define FD_SIZE 4096
