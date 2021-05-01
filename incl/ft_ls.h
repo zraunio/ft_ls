@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 13:14:18 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/24 15:07:29 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/05/01 15:31:29 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,16 @@
 # define RECUR 0x8
 # define REV 0x10
 # define HELP 0x20
-# define LINK 0x40
+# define SIZE 0x40
 # define HUMAN 0x80
-//0x100 0x200 0x400 0x800 0x1000 0x2000 etc.
+# define LINES 0x100
+//0x200 0x400 0x800 0x1000 0x2000 etc.
 
 # define DIR 16877
 # define REG 33188
 
 # define OPTIONS "lsxarhtR"
 
-char 	*ls_options(char *str);
+void 	ls_options(char *str);
+void	sort_args(char **av);
 #endif

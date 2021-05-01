@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 13:01:21 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/25 14:36:18 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/05/01 14:33:49 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,6 @@ int					ft_tree_height(t_bitree *root);
 ** bits
 */
 size_t				ft_orfill_bit(size_t nb, size_t *arr);
-size_t				ft_oradd_bit(size_t nb, size_t *arr);
+size_t				ft_oradd_bit(size_t nb, size_t arr);
 
 #endif
