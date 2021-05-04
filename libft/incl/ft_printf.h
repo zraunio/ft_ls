@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 13:44:34 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/24 13:44:52 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/05/04 12:57:31 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct	s_flags
 	int		sign;
 	int		spc;
 	int		hash;
+	int		star;
 	int		z;
 	char	padd_c;
 	char	cnvrsn;

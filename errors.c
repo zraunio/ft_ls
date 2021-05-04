@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_oradd_bit.c                                     :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/17 12:12:42 by zraunio           #+#    #+#             */
-/*   Updated: 2021/05/02 09:14:00 by zraunio          ###   ########.fr       */
+/*   Created: 2021/05/04 13:52:58 by zraunio           #+#    #+#             */
+/*   Updated: 2021/05/04 14:04:09 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/libft.h"
+#include "incl/ft_ls.h"
 
-size_t	ft_oradd_bit(size_t nb, size_t bit)
+int	ft_printerr(char *str, int error)
 {
-	size_t	i;
-
-	i = 0;
-	nb |= bit;
-	return (nb);
+	if (error == USAGE)
+		ft_printf("ft_ls: illegal option -- %s\nusage: ft_ls [lsxarhtR] [file...]", str);
+	else if (error == ERR || error == MALLOC_ERR)
+	{
+		ft_printf("ft_ls: %s: ", str);
+		ft_putendl(strerror());
+	}
+	if (error == USAGE || error == MALLOC_ERR)
+		exit(EXIT_FAILURE);
+	return (0);
 }
-/*
-** adds all traits with | operator
-** array last value MUST be 0
-*/

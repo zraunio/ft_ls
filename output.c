@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_oradd_bit.c                                     :+:      :+:    :+:   */
+/*   output.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/17 12:12:42 by zraunio           #+#    #+#             */
-/*   Updated: 2021/05/02 09:14:00 by zraunio          ###   ########.fr       */
+/*   Created: 2021/05/02 09:30:04 by zraunio           #+#    #+#             */
+/*   Updated: 2021/05/04 13:32:08 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incl/libft.h"
+#include "incl/ft_ls.h"
 
-size_t	ft_oradd_bit(size_t nb, size_t bit)
-{
-	size_t	i;
+// printf("%-13s", "drwxr-xr-x@");
+// printf("%-*d", 3, 3);
+// printf("%-*s", 9, "zraunio");
+// printf("%-*s", 10, "staff");
+// printf("%-*d", 4, 96);
+// printf("%-*s", 6, "2 May");
+// printf("%-*s", 6, "10:40");
+// printf("%-*s", 6, "eval_tests");
 
-	i = 0;
-	nb |= bit;
-	return (nb);
-}
-/*
-** adds all traits with | operator
-** array last value MUST be 0
-*/

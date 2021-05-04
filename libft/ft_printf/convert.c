@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 10:38:57 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/15 14:04:10 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/05/04 13:34:25 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ size_t			nbr_check_flags(t_flags *flgs, long long nb, char *str)
 
 size_t			ft_convert(char *str, va_list *list, t_flags *flg)
 {
+	if (flg->star == 1)
+		flg->min_wi = (unsigned int)va_arg(*list, unsigned int);
 	if (str[ft_strlen(str) - 1] == 's' || str[ft_strlen(str) - 1] == 'p' ||
 	str[ft_strlen(str) - 1] == 'c' || str[ft_strlen(str) - 1] == '%')
 		return (convert_spc(str, list, flg));

@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 14:41:14 by zraunio           #+#    #+#             */
-/*   Updated: 2021/05/01 14:56:17 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/05/02 09:29:24 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 size_t	add_option(size_t flgs, char c)
 {
-	flgs = flgs ^ 0x0;
 	if (c == 'l')
 		flgs = ft_oradd_bit(flgs, (size_t)LONG);
 	else if (c == 'a')
@@ -36,26 +35,24 @@ size_t	add_option(size_t flgs, char c)
 	return (flgs);
 }
 
-void	ls_options(char *str)
+size_t	ls_options(char *str, size_t flgs)
 {
 	size_t	i;
-	size_t	flgs;
 
 	i = 1;
-	flgs = 0;
-	if (ft_strcmp(str, "--help") == 0)
-	{
-		flgs = add_option(flgs, '1');
-		return ;
-	}
+	if (ft_strcmp("--help", str) == 0)
+		return (add_option(flgs, '1'));
 	while (str[i])
 	{
 		if (!(ft_strchr(OPTIONS, str[i])))
+		{
 			ft_putstr("USAGE\n");
+			return (0);
+		}
 		else
 			flgs = add_option(flgs, str[i++]);
 	}
-	ft_print_bits(flgs, 64);
+	return (flgs);
 }
 
 void	sort_args(char **av)

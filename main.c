@@ -159,16 +159,17 @@
 // 	return (0);
 // }
 
-int		main(int argc, char **argv)
+int		main()
 {
-	size_t	i = 1;
-//	test_new(argc, argv);
-	sort_args(argv);
-	while (argc > (int)i)
-	{
-		if (argv[i][0] == '-')
-			ls_options(argv[i]);
-		i++;
-	}
+ft_printf("%-13s", "drwxr-xr-x@");
+ft_printf("%-*d", 2, 3);
+ft_printf("%-*s", 9, "zraunio");
+ft_printf("%-*s", 10, "staff");
+ft_printf("%-*d", 4, 96);
+ft_printf("%-*s", 6, "2 May");
+ft_printf("%-*s", 6, "10:40");
+ft_printf("%-*s", 6, "eval_tests");
 	return (0);
 }
+
+//gcc -Wall -Wextra -Werror -I./incl -L./libft -lft main.c options.c -o ft_ls

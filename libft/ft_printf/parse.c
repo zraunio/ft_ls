@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 10:37:14 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/15 14:04:10 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/05/04 13:16:30 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,14 @@ static void		fill_struct(const char *str, t_flags *flgs)
 
 	i = 1;
 	while (str[i] == '-' || str[i] == '+' || str[i] == '#' || str[i] == '0'
-	|| str[i] == ' ')
+	|| str[i] == ' ' || str[i] == '*')
 	{
 		str[i] == '-' ? flgs->left = 1 : 0;
 		str[i] == '+' ? flgs->sign = 1 : 0;
 		str[i] == '0' ? flgs->zero = 1 : 0;
 		str[i] == ' ' ? flgs->spc = 1 : 0;
 		str[i] == '#' ? flgs->hash = 1 : 0;
+		str[i] == '*' ? flgs->star = 1 : 0;
 		i++;
 	}
 	while (str[i] != '\0')
@@ -97,6 +98,7 @@ static void		reset_flags(t_flags *flgs)
 	flgs->zero = 0;
 	flgs->padd_c = 0;
 	flgs->cnvrsn = 0;
+	flgs->star = 0;
 }
 
 size_t			parse(char *str, va_list *list)
