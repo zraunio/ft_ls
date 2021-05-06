@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 10:09:09 by zraunio           #+#    #+#             */
-/*   Updated: 2021/05/06 12:36:55 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/05/06 14:00:10 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ t_data	*ft_new_data(char *path)
 	node = (t_data*)malloc(sizeof(t_data));
 	if (!node)
 		return (NULL);
+	ft_memset(node, 0, sizeof(t_data));
 	node->left = NULL;
-	node->right = NULL;	
+	node->right = NULL;
 	node->path = path;
 	return (node);
 }
@@ -47,7 +48,7 @@ t_data	*save_args(t_data *node, char *path)
 	{
 		node = ft_new_data(path);
 		if (!node)
-			treedel_postord(node, "path");
+			treedel_postord(node, path);
 	}
 	else
 		save_newarg(&node, ft_new_data(path));
@@ -70,13 +71,13 @@ void	create_trees(t_lsarg *args,int ac, char **av)
 		{
 			args->dir = save_args(args->dir, av[i++]);
 			if (!args->dir)
-				treedel_postord(args->dir, "dir");
+				treedel_postord(args->dir, av[i - 1]);
 		}
 		else if (S_ISLNK(buf.st_mode) || S_ISREG(buf.st_mode))
 		{
 			args->file = save_args(args->file, av[i++]);
 			if (!args->file)
-				treedel_postord(args->file, "file");
+				treedel_postord(args->file, av[i - 1]);
 		}
 	}
 }
@@ -86,7 +87,7 @@ t_lsarg	*fill_arg(int ac, char **av)
 	t_lsarg	*args;
 	size_t	i;
 
-	i = 1;
+	i = 0;
 	args = (t_lsarg *)malloc(sizeof(t_lsarg));
 	if (!args)
 		ft_printerr(av[1], MALLOC_ERR);

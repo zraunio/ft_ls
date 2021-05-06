@@ -148,14 +148,23 @@
 // 	return (0);
 // }
 
+void	free_args(t_lsarg *args)
+{
+	treedel_postord(args->file, "");
+	treedel_postord(args->dir, "");
+	ft_memdel((void *)&args);
+}
+
 int		main(int argc, char **argv)
 {
 	t_lsarg	*args;
 
 	sort_args(&argv[1]);
 	args = fill_arg((argc - 1), &argv[1]);
+	read_trees(args);
 	printtr_inord(args->file);
 	printtr_inord(args->dir);
+	free_args(args);
 	return (0);
 }
 

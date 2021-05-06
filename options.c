@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 14:41:14 by zraunio           #+#    #+#             */
-/*   Updated: 2021/05/02 09:29:24 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/05/06 12:49:29 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,7 @@ size_t	ls_options(char *str, size_t flgs)
 	while (str[i])
 	{
 		if (!(ft_strchr(OPTIONS, str[i])))
-		{
-			ft_putstr("USAGE\n");
-			return (0);
-		}
+			return (ft_printerr(&str[i], USAGE));
 		else
 			flgs = add_option(flgs, str[i++]);
 	}
