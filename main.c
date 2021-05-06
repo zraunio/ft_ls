@@ -79,17 +79,6 @@
 // 	node = NULL;
 // }
 
-// void 	ft_printtr_inord(t_bitree *node)
-// {
-// 	//create in order that takes pointer to function
-// 	//apply said function to tree inorder, preorder, etc.
-// 	if (node == NULL || node->item == NULL)
-// 		return ;
-// 	ft_printtr_inord(node->left);
-// 	printf("%s", node->item);
-// 	ft_printtr_inord(node->right);
-// }
-
 // void	arrelem_free(char **arr)
 // {
 // 	size_t	i;
@@ -159,16 +148,14 @@
 // 	return (0);
 // }
 
-int		main()
+int		main(int argc, char **argv)
 {
-ft_printf("%-13s", "drwxr-xr-x@");
-ft_printf("%-*d", 2, 3);
-ft_printf("%-*s", 9, "zraunio");
-ft_printf("%-*s", 10, "staff");
-ft_printf("%-*d", 4, 96);
-ft_printf("%-*s", 6, "2 May");
-ft_printf("%-*s", 6, "10:40");
-ft_printf("%-*s", 6, "eval_tests");
+	t_lsarg	*args;
+
+	sort_args(&argv[1]);
+	args = fill_arg((argc - 1), &argv[1]);
+	printtr_inord(args->file);
+	printtr_inord(args->dir);
 	return (0);
 }
 
