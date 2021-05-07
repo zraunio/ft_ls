@@ -6,13 +6,13 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 12:51:51 by zraunio           #+#    #+#             */
-/*   Updated: 2021/05/06 14:32:21 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/05/07 14:00:57 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "incl/ft_ls.h"
 
-static void		input_rest(struct stat buf, t_data *node)
+static void	input_rest(struct stat buf, t_data *node)
 {
 	struct group	*grp;
 	struct passwd	*pwd;
@@ -35,7 +35,7 @@ static void		input_rest(struct stat buf, t_data *node)
 	}
 }
 
-static void		input(t_data *node)
+static void	input(t_data *node)
 {
 	struct stat	buf;
 
@@ -68,6 +68,8 @@ void	read_inord(t_data *node)
 
 void	read_trees(t_lsarg *args)
 {
-	read_inord(args->file);
-	read_dir(args->dir);
+	if (args->file)
+		read_inord(args->file);
+	if (args->dir)
+		read_dir(args->dir);
 }

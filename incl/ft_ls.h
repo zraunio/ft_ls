@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 13:14:18 by zraunio           #+#    #+#             */
-/*   Updated: 2021/05/06 14:33:51 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/05/07 15:01:01 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,11 @@ size_t	ls_options(char *str, size_t flgs);
 void	sort_args(char **av);
 int		ft_printerr(char *str, int error);
 void	treedel_postord(t_data *node, char *str);
+void	free_args(t_lsarg *args);
 t_lsarg	*fill_arg(int ac, char **av);
 void 	printtr_inord(t_data *node);
 void	read_trees(t_lsarg *args);
-t_lsarg	*read_dir(t_data *dir);
+void	read_dir(t_data *dir);
+t_data	*save_args(t_data *node, char *path);
+void	sort_data(t_data *root);
 #endif

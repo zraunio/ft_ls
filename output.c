@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/02 09:30:04 by zraunio           #+#    #+#             */
-/*   Updated: 2021/05/06 14:01:23 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/05/07 15:43:56 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,13 @@
 
 
 //with all other options, you can just print by one factor, start with normal alphabetical print, it's easy
+// void	
 
 void 	printtr_inord(t_data *node)
 {
 	if (node == NULL || node->path == NULL)
 		return ;
 	printtr_inord(node->left);
-	ft_printf("---%s---\n", node->path);
-	ft_printf("%zu\n", node->st_ino);
-	ft_printf("%i\n", node->st_mode);
-	ft_printf("%i\n", node->nlink);
-	ft_printf("%zu\n", node->size);
-	ft_printf("%zu\n", node->blksize);
-	ft_printf("%i\n", node->blocks);
-	ft_printf("%li\n", node->m_time);
-	ft_printf("%zu\n", node->dev_t);
+	printf("%lu\n", node->m_time);
 	printtr_inord(node->right);
 }

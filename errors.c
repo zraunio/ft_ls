@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 13:52:58 by zraunio           #+#    #+#             */
-/*   Updated: 2021/05/06 14:28:35 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/05/07 13:27:10 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	ft_printerr(char *str, int error)
 	if (error == USAGE || error == MALLOC_ERR)
 		exit(EXIT_FAILURE);
 		//malloc error deserves a some freeing action or else we're in trouble?
-	exit(EXIT_SUCCESS);
 	return (0);
 }
 

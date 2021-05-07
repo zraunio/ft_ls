@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 10:09:09 by zraunio           #+#    #+#             */
-/*   Updated: 2021/05/06 14:00:10 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/05/07 14:12:07 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ t_data	*ft_new_data(char *path)
 {
 	t_data	*node;
 
-	node = (t_data*)malloc(sizeof(t_data));
+	if (!path)
+		return (NULL);
+	node = (t_data *)malloc(sizeof(t_data));
 	if (!node)
 		return (NULL);
 	ft_memset(node, 0, sizeof(t_data));
@@ -55,7 +57,7 @@ t_data	*save_args(t_data *node, char *path)
 	return (node);
 }
 
-void	create_trees(t_lsarg *args,int ac, char **av)
+void	create_trees(t_lsarg *args, int ac, char **av)
 {
 	struct stat	buf;
 	size_t	i;
@@ -91,8 +93,15 @@ t_lsarg	*fill_arg(int ac, char **av)
 	args = (t_lsarg *)malloc(sizeof(t_lsarg));
 	if (!args)
 		ft_printerr(av[1], MALLOC_ERR);
-	while (av[i][0] == '-')
+	ft_memset(args, 0, sizeof(t_lsarg));
+	while (av[i] != NULL && av[i][0] == '-')
 			args->optns = ls_options(av[i++], args->optns);
-	create_trees(args, (ac - i), &av[i]);
+	if (!av[i])
+	{
+		args->dir = (ft_new_data("./"));
+		args->file = NULL;
+	}
+	else
+		create_trees(args, (ac - i), &av[i]);
 	return (args);
 }

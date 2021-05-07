@@ -150,22 +150,28 @@
 
 void	free_args(t_lsarg *args)
 {
-	treedel_postord(args->file, "");
-	treedel_postord(args->dir, "");
+	if (args->file)
+		treedel_postord(args->file, "");
+	if (args->dir)
+		treedel_postord(args->dir, "");
 	ft_memdel((void *)&args);
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_lsarg	*args;
 
-	sort_args(&argv[1]);
+	if (argv[1])
+		sort_args(&argv[1]);
 	args = fill_arg((argc - 1), &argv[1]);
 	read_trees(args);
 	printtr_inord(args->file);
-	printtr_inord(args->dir);
+	ft_printf("______");
+	if ((args->optns & TIME) != 0)
+		sort_data(args->file);
+	printtr_inord(args->file);
+	// printtr_inord(args->dir);
 	free_args(args);
 	return (0);
 }
-
 //gcc -Wall -Wextra -Werror -I./incl -L./libft -lft main.c options.c -o ft_ls
