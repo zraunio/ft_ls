@@ -46,18 +46,16 @@ _CONV_SRC = convert/ft_atoi.c \
 		convert/ft_ftoa.c \
 		convert/ft_sizetoa.c \
 
-_LIST_SRC = list/ft_lstadd.c \
-		list/ft_lstdel.c \
-		list/ft_lstdelone.c \
-		list/ft_lstiter.c \
-		list/ft_lstmap.c \
-		list/ft_lstnew.c \
+_LIST_SRC = list/ft_listnew.c \
+			list/ft_addlstelem.c \
+			list/ft_freelst.c \
 
 _MATH_SRC = math/dig_count_base.c \
 		math/dig_count.c \
 		math/ft_abs.c \
 		math/ft_float_abs.c \
 		math/ft_llmax.c \
+		math/ft_max.c \
 		math/ft_wdcounter.c \
 		math/ft_strstr_start.c \
 		math/ft_long_abs.c \
@@ -106,6 +104,7 @@ _STR_SRC = str/ft_strcat.c \
 		str/ft_strjoin_free.c \
 		str/ft_strlcat.c \
 		str/ft_strlen.c \
+		str/ft_strilen.c \
 		str/ft_strmap.c \
 		str/ft_strmapi.c \
 		str/ft_strncat.c \
@@ -123,7 +122,8 @@ _STR_SRC = str/ft_strcat.c \
 		str/ft_strsub.c \
 		str/ft_strtrim.c \
 		str/ft_strtrim_top.c \
-		str/ft_strtrim_end.c
+		str/ft_strtrim_end.c \
+		str/ft_strrev.c \
 
 _TREE_SRC = trees/ft_add_node.c \
 		trees/ft_new_node.c \

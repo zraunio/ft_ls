@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 10:58:51 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/15 13:47:13 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/05/17 15:54:36 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	ft_count_digit(long int nb)
 	nb = ft_abs(nb);
 	while (nb > 0)
 	{
-		i++;
 		nb = nb / 10;
+		i++;
 	}
 	return (i);
 }

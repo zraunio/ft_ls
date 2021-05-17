@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_freelst.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/10 14:32:45 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/15 13:47:13 by zraunio          ###   ########.fr       */
+/*   Created: 2021/05/15 12:06:59 by zraunio           #+#    #+#             */
+/*   Updated: 2021/05/15 12:07:17 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/libft.h"
 
-void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t))
+void	ft_freelst(t_list *ls)
 {
-	if (del != NULL && alst != NULL)
-	{
-		del((*alst)->content, (*alst)->content_size);
-		free(*alst);
-		*alst = NULL;
-	}
+	ft_arr_free(ls->arg);
+	ls->arg_size = 0;
+	ls->elem_count = 0;
+	ft_memdel((void *)&ls);
 }

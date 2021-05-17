@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 14:41:14 by zraunio           #+#    #+#             */
-/*   Updated: 2021/05/07 11:23:34 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/05/17 12:57:30 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,8 @@ size_t	add_option(size_t flgs, char c)
 		flgs = ft_oradd_bit(flgs, (size_t)SIZE);
 	else if (c == 'R')
 		flgs = ft_oradd_bit(flgs, (size_t)RECUR);
-	else if (c == 'x')
-		flgs = ft_oradd_bit(flgs, (size_t)LINES);
-	else if (c == '1')
-		flgs = ft_oradd_bit(flgs, (size_t)HELP);
+	else if (c == 'S')
+		flgs = ft_oradd_bit(flgs, (size_t)SORT_S);
 	return (flgs);
 }
 
@@ -40,29 +38,28 @@ size_t	ls_options(char *str, size_t flgs)
 	size_t	i;
 
 	i = 1;
-	if (ft_strcmp("--help", str) == 0)
-		return (add_option(flgs, '1'));
 	while (str[i])
 	{
 		if (!(ft_strchr(OPTIONS, str[i])))
-			return (ft_printerr(&str[i], USAGE));
+			return (printerr(&str[i], USAGE));
 		else
 			flgs = add_option(flgs, str[i++]);
 	}
 	return (flgs);
 }
 
-void	sort_args(char **av)
+void	sort_args(size_t ac, char **av)
 {
 	size_t		i;
 	size_t		j;
 	char		*temp;
 
 	i = 0;
-	while (av[i])
+	temp = NULL;
+	while (av[i] != NULL && i < ac)
 	{
 		j = i + 1;
-		while (av[j])
+		while (av[j] != NULL && j < ac)
 			if (ft_strcmp(av[i], av[j]) > 0)
 			{
 				temp = av[i];

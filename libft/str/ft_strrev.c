@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/16 11:27:52 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/15 13:47:13 by zraunio          ###   ########.fr       */
+/*   Created: 2021/05/09 14:46:45 by zraunio           #+#    #+#             */
+/*   Updated: 2021/05/09 14:50:36 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
+char	*ft_strrev(char *str)
 {
-	if (!lst || !f)
-		return ;
-	while (lst)
+	int	len;
+	int	i;
+	char	tmp;
+
+	len = ft_strlen(str);
+	i = 0;
+	while (i < len)
 	{
-		f(lst);
-		lst = lst->next;
+		tmp = str[i];
+		str[i] = str[len];
+		str[len] = tmp;
+		i++;
+		len--;
 	}
+	str[i] = '\0';
+	return (str);
 }

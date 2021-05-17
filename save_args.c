@@ -5,103 +5,75 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/06 10:09:09 by zraunio           #+#    #+#             */
-/*   Updated: 2021/05/07 14:12:07 by zraunio          ###   ########.fr       */
+/*   Created: 2021/05/16 20:41:58 by zraunio           #+#    #+#             */
+/*   Updated: 2021/05/17 12:44:31 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "incl/ft_ls.h"
 
-t_data	*ft_new_data(char *path)
+t_data	*new_node(char *str)
 {
-	t_data	*node;
+	t_data	*new;
 
-	if (!path)
-		return (NULL);
-	node = (t_data *)malloc(sizeof(t_data));
-	if (!node)
-		return (NULL);
-	ft_memset(node, 0, sizeof(t_data));
-	node->left = NULL;
-	node->right = NULL;
-	node->path = path;
-	return (node);
+	new = (t_data *)malloc(sizeof(t_data));
+	if (!new)
+		printerr(str, MALLOC_ERR);
+	ft_memset(new, 0, sizeof(t_data));
+	new->name = str;
+	new->next = NULL;
+	return (new);
+	
 }
 
-void	save_newarg(t_data **root, t_data *node)
+void	fill_list(t_lsarg *ls, char *str, size_t i)
 {
-	t_data *temp;
+	t_data	*temp;
 
-	temp = *root;
-	if (temp == NULL)
+	if ((!ls->dirs && i == 0) || (!ls->files && i == 1))
 	{
-		temp = node;
-		*root = temp;
-	}
-	else if (ft_strcmp(node->path, temp->path) <= 0)
-		save_newarg(&(temp->left), node);
-	else
-		save_newarg(&(temp->right), node);
-}
-
-t_data	*save_args(t_data *node, char *path)
-{
-	if (node == NULL)
-	{
-		node = ft_new_data(path);
-		if (!node)
-			treedel_postord(node, path);
+		temp = new_node(str);
+		if (i == 0)
+			ls->dirs = temp;
+		else
+			ls->files = temp;
 	}
 	else
-		save_newarg(&node, ft_new_data(path));
-	return (node);
+	{
+		if (i == 0)
+			temp = ls->dirs;
+		else
+			temp = ls->files;
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = new_node(str);
+	}
 }
 
-void	create_trees(t_lsarg *args, int ac, char **av)
+void	create_lists(t_lsarg *ls, char **av)
 {
 	struct stat	buf;
-	size_t	i;
+	size_t		i;
+	size_t		flg;
 
+	flg = 0;
 	i = 0;
-	args->file = NULL;
-	args->dir = NULL;
-	while (i + 1 <= (size_t)ac)
+	while (av[i] != NULL)
 	{
-		if (lstat(av[i], &buf) != 0)
-			ft_printerr(av[i], ERR);
+		if (stat(av[i++], &buf) != 0)
+		{
+			printerr(av[i - 1], ERR);
+			flg = 1;
+		}
 		else if (S_ISDIR(buf.st_mode))
-		{
-			args->dir = save_args(args->dir, av[i++]);
-			if (!args->dir)
-				treedel_postord(args->dir, av[i - 1]);
-		}
-		else if (S_ISLNK(buf.st_mode) || S_ISREG(buf.st_mode))
-		{
-			args->file = save_args(args->file, av[i++]);
-			if (!args->file)
-				treedel_postord(args->file, av[i - 1]);
-		}
+			fill_list(ls, av[i - 1], 0);
+		else
+			fill_list(ls, av[i - 1], 1);
 	}
-}
-
-t_lsarg	*fill_arg(int ac, char **av)
-{
-	t_lsarg	*args;
-	size_t	i;
-
-	i = 0;
-	args = (t_lsarg *)malloc(sizeof(t_lsarg));
-	if (!args)
-		ft_printerr(av[1], MALLOC_ERR);
-	ft_memset(args, 0, sizeof(t_lsarg));
-	while (av[i] != NULL && av[i][0] == '-')
-			args->optns = ls_options(av[i++], args->optns);
-	if (!av[i])
-	{
-		args->dir = (ft_new_data("./"));
-		args->file = NULL;
-	}
-	else
-		create_trees(args, (ac - i), &av[i]);
-	return (args);
+	if (!ls->dirs && !ls->files && flg == 0)
+		fill_list(ls, ".", 0);
+	if (ls->dirs)
+		get_data(ls->dirs);
+	if (ls->files)
+		get_data(ls->files);
 }

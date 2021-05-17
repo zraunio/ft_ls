@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_max.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/16 11:59:53 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/15 13:47:13 by zraunio          ###   ########.fr       */
+/*   Created: 2021/05/17 11:04:56 by zraunio           #+#    #+#             */
+/*   Updated: 2021/05/17 11:05:46 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incl/libft.h"
 
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+int		ft_max(int x, int y)
 {
-	t_list	*new;
-	t_list	*temp;
-
-	if (!lst || !f)
-		return (0);
-	new = f(lst);
-	if (new == NULL)
-		return (NULL);
-	if (!(temp = ft_lstnew(new->content, new->content_size)))
-		return (NULL);
-	temp = new;
-	while (lst->next)
-	{
-		lst = lst->next;
-		temp->next = f(lst);
-		if (temp->next == NULL)
-			return (NULL);
-		temp = temp->next;
-	}
-	return (new);
+	if (x > y)
+		return (x);
+	else if (y > x)
+		return (y);
+	else
+		return (x);
 }

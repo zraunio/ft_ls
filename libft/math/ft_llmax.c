@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 15:07:28 by zraunio           #+#    #+#             */
-/*   Updated: 2021/03/24 13:43:34 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/05/17 11:05:58 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ long long int		ft_llmax(long long x, long long y)
 	else if (y > x)
 		return (y);
 	else
-		return (x + y);
+		return (x);
 }

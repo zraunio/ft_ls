@@ -6,7 +6,7 @@
 /*   By: zraunio <zraunio@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 13:01:21 by zraunio           #+#    #+#             */
-/*   Updated: 2021/05/01 14:33:49 by zraunio          ###   ########.fr       */
+/*   Updated: 2021/05/17 15:01:55 by zraunio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@
 
 typedef struct		s_list
 {
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
+	char		**arg;
+	size_t		arg_size;
+	size_t		elem_count;;
 }					t_list;
 
 typedef struct		s_bitree
@@ -57,6 +57,7 @@ float				ft_float_abs(float value);
 unsigned long int	ft_long_abs(long long int value);
 long long int		ft_powerof(long int nb, unsigned int p);
 long long int		ft_llmax(long long x, long long y);
+int					ft_max(int x, int y);
 size_t				ft_wdcounter(char const *str, char c);
 int					dig_count_base(long long int nb,
 					long int base);
@@ -82,13 +83,16 @@ char				*ft_ftoa(long double d, size_t decimal);
 char				*ft_sizetoa(size_t nb);
 /*
 ** list
+** t_list				*ft_lstnew(void const *content, size_t content_size);
+** t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+** void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
+** void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
+** void				ft_lstadd(t_list **alst, t_list *new);
+** void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 */
-t_list				*ft_lstnew(void const *content, size_t content_size);
-t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-void				ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
-void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstadd(t_list **alst, t_list *new);
-void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+t_list				*ft_listnew(size_t size);
+int					ft_addlstelem(t_list *lst, char *str);
+void				ft_freelst(t_list *ls);
 /*
 ** memory
 */
@@ -152,10 +156,12 @@ char				*ft_strrchr(const char *s, int c);
 char				*ft_strncpy(char *dest, const char *src, size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t				ft_strlen(const char *str);
+int					ft_strilen(const char *str);
 size_t				ft_strlcat(char *dest, const char *src, size_t n);
 char				*ft_strcpy(char *dest, const char *src);
 int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strtrim_end(const char *s, char c);
+char				*ft_strrev(char *str);
 /*
 ** binary trees
 */
